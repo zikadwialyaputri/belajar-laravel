@@ -63,7 +63,7 @@ class MatakuliahController extends Controller
      */
     public function destroy()
     {
-        return "Menghapus data";
+        return "Menghapus bnsbssgklblfk data";
 
     }
 }
