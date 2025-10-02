@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Laravel App</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,39 +12,53 @@
         body {
             font-family: 'Arial', sans-serif;
         }
+
         .navbar-brand {
             font-weight: bold;
         }
+
         .navbar {
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .jumbotron {
-            background-color: #007bff;
+
+        .hero-section {
+            background-color: #3E97FF;
             color: white;
-            padding: 4rem 2rem;
-            margin-bottom: 2rem;
+            padding: 50px 0;
             text-align: center;
         }
-        .jumbotron h1 {
+
+        .hero-section h1 {
             font-size: 3rem;
         }
+
         .card {
-            border: none;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .alert {
-            margin-bottom: 1rem;
+
+        .footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #6c757d;
         }
     </style>
 </head>
-<body>
 
+<body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">My Laravel App</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#">My App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -66,45 +80,66 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container mt-4">
-
-        <!-- Jumbotron / Hero Section -->
-        <div class="jumbotron rounded">
-            <h1>{{ $username }}</h1>
-            <p>{{ $last_login }}</p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to My App</h1>
+            <p class="lead">A simple and elegant app using Bootstrap 5 and Laravel Blade</p>
+            <a href="#content" class="btn btn-light btn-lg mt-3">Learn More</a>
         </div>
+    </section>
 
+    <!-- Content Section -->
+    <section id="content" class="container mt-5">
         <div class="row">
-            <!-- About Section -->
-            <div class="col-lg-8 mb-4">
-                <div class="card p-4 h-100">
-                    <h5 class="card-title">About Our Application</h5>
-                    <p class="card-text">Our application provides a clean and intuitive interface, allowing users to navigate easily and perform tasks efficiently. Built with Laravel and Bootstrap, it offers flexibility and responsiveness.</p>
-                    <a href="#" class="btn btn-primary">Explore More</a>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">About Our Application</h5>
+                        <p class="card-text">Our application provides a clean and intuitive interface, allowing users to
+                            navigate easily and perform tasks efficiently. Built with Laravel and Bootstrap, it offers
+                            flexibility and responsiveness.</p>
+                        <a href="#" class="btn btn-primary">Explore More</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Alerts Section -->
-            <div class="col-lg-4 mb-4">
-                <div class="card p-4 h-100">
-                    <h5 class="card-title">Alerts</h5>
-                    <div class="alert alert-info" role="alert">
-                        Informational alert
-                    </div>
-                    <div class="alert alert-success" role="alert">
-                        Success alert
-                    </div>
-                    <div class="alert alert-warning" role="alert">
-                        Warning alert
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Form Pertanyaan</h5>
+                        <form action="{{ route('question.store') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="nama" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="nama" name="nama" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pertanyaan" class="form-label">Pertanyaan</label>
+                                <textarea class="form-control" id="pertanyaan" name="pertanyaan" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Kirim Pertanyaan</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        </div>
+    </section>
 
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 My Laravel App. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-    <!-- Bootstrap 5 JS -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
