@@ -26,11 +26,27 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $data['nama']       = $request->nama;
-        $data['email']      = $request->email;
-        $data['pertanyaan'] = $request->pertanyaan;
+        // $data['nama']       = $request->nama;
+        // $data['email']      = $request->email;
+        // $data['pertanyaan'] = $request->pertanyaan;
 
-        return view('home-question-respon', $data);
+        // return view('home-question-respon', $data);
+
+        $request->validate([
+            'nama'       => 'required|min:5|max:50',
+            'email'      => 'required|email',
+            'pertanyaan' => 'required|min:10|max:300',
+        ], [
+            'nama.required'       => 'Nama wajib diisi',
+            'email.required'      => 'Email wajib diisi',
+            'email.email'         => 'Format email tidak valid',
+            'pertanyaan.required' => 'Pertanyaan wajib diisi'
+        ]);
+        $nama       = $request->input('nama');
+        $email      = $request->input('email');
+        $pertanyaan = $request->input('pertanyaan');
+
+        return view('home-question-respon', compact('nama', 'email', 'pertanyaan'));
     }
 
     /**
