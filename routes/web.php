@@ -40,8 +40,6 @@ Route::get('/question', function () {
 
 Route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
 
-Route::get('/auth', [AuthController::class, 'index'])->name('auth.index');
-Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard')->middleware('web');
+
+Route::get('/auth', [AuthController::class, 'index']);
+Route::post('/auth/login', [AuthController::class, 'login']);
