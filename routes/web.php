@@ -5,6 +5,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR';
@@ -35,6 +36,12 @@ Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/question', function () {
     return view('home');
-})->name('question.form');
+    })->name('question.form');
 
 Route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
+
+Route::get('/auth', [AuthController::class, 'index'])->name('auth.index');
+Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard')->middleware('web');
