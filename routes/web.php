@@ -6,6 +6,7 @@ use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PegawaiController;
 
 Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR';
@@ -46,3 +47,6 @@ Route::post('/auth/login', [AuthController::class, 'login'])->name('login.proces
 Route::get('/auth/success', function () {
     return view('login-success', ['username' => session('username')]);
 })->name('auth.success');
+
+Route::get('/pegawai', [PegawaiController::class, 'form'])->name('pegawai.form');
+Route::post('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.process');
