@@ -41,5 +41,8 @@ Route::get('/question', function () {
 Route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
 
 
-Route::get('/auth', [AuthController::class, 'index']);
-Route::post('/auth/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/auth/login', [AuthController::class, 'login'])->name('login.process');
+Route::get('/auth/success', function () {
+    return view('login-success', ['username' => session('username')]);
+})->name('auth.success');

@@ -51,38 +51,53 @@
 <body>
 
     <div class="login-card">
-        <h2>Login</h2>
-        @if(session('error'))
-        <div class="alert alert-danger text-center">{{ session('error') }}</div>
-        @endif
 
-        <!-- Form login -->
-        <form action="/auth/login" method="POST">
+        <h2>Login</h2>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger text-center">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success text-center">
+                {{ session('success') }}
+            </div>
+        @endif
+        <form action="{{ url('/auth/login') }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" required>
+                <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}">
                 @error('username')
-                <small class="text-danger">{{ $message }}</small>
+                    <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password">
                 @error('password')
-                <small class="text-danger">{{ $message }}</small>
+                    <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
             <button type="submit" class="btn btn-login w-100">Masuk</button>
         </form>
 
-
         <p class="text-center mt-3 text-muted" style="font-size: 14px;">
             © 2025 Sistem Login Website Zika
         </p>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

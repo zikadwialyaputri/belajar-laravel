@@ -6,13 +6,11 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    // Function index → tampilkan halaman login
     public function index()
     {
-        return view('login'); // arahkan ke resources/views/login.blade.php
-    }
 
-    // Function login → proses data login
+        return view('login');
+    }
     public function login(Request $request)
     {
         $request->validate([
@@ -28,10 +26,11 @@ class AuthController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
-        if ($username === 'admin' && $password === 'Admin123') {
-            return "Login berhasil, selamat datang $username";
+        if ($username === 'zika' && $password === 'Zika123') {
+    session(['username' => $username]); 
+    return redirect()->route('auth.success');
         } else {
-            return redirect()->back()->with('error', 'Username atau password salah');
+            return back()->with('error', 'Username atau password salah');
         }
     }
 }
