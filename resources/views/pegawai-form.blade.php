@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Data Pegawai</title>
+    <title>Form Data Mahasiswa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light p-5">
 <div class="container">
     <div class="card shadow p-4">
-        <h2 class="text-center mb-4 text-primary">Form Input Data Pegawai</h2>
+        <h2 class="text-center mb-4 text-primary">Form Input Data Mahasiswa</h2>
 
         <form action="{{ route('pegawai.process') }}" method="POST">
             @csrf

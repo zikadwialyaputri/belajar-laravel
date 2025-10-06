@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Data Pegawai</title>
+    <title>Hasil Data Mahasiswa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light p-5">
 <div class="container">
     <div class="card shadow p-4">
-        <h1 class="text-center text-success mb-4 bold">Hasil Data Pegawai</h1>
+        <h1 class="text-center text-success mb-4 bold">Hasil Data Mahasiswa</h1>
 
         <p><strong>Nama:</strong> {{ $name }}</p>
         <p><strong>Umur:</strong> {{ $my_age }} tahun</p>
