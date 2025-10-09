@@ -46,7 +46,13 @@ class QuestionController extends Controller
         $email      = $request->input('email');
         $pertanyaan = $request->input('pertanyaan');
 
-        return view('home-question-respon', compact('nama', 'email', 'pertanyaan'));
+        $pesan = "Terimakasih {$request->nama}! Pertanyaan kamu : '{$request->pertanyaan}' akan segera kami respon melalui email {$request->email} yaaa!!.";
+        return redirect()->back()->with('info', $pesan);
+
+        // return view('home-question-respon', compact('nama', 'email', 'pertanyaan'));
+        // return redirect()->route('home');
+        // return redirect()->back();
+        // return redirect()->away('https://www.example.com');
     }
 
     /**
