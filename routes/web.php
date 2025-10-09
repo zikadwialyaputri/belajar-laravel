@@ -6,6 +6,7 @@ use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR';
@@ -45,3 +46,5 @@ Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login')
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard')->middleware('web');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
