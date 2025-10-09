@@ -6,6 +6,10 @@ use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\PegawaiController;
+>>>>>>> 5bfd5e9f0b50601d821428f1a11b0b382bf20688
 
 Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR';
@@ -40,8 +44,20 @@ Route::get('/question', function () {
 
 Route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
 
+<<<<<<< HEAD
 Route::get('/auth', [AuthController::class, 'index'])->name('auth.index');
 Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard')->middleware('web');
+=======
+
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/auth/login', [AuthController::class, 'login'])->name('login.process');
+Route::get('/auth/success', function () {
+    return view('login-success', ['username' => session('username')]);
+})->name('auth.success');
+
+Route::get('/pegawai', [PegawaiController::class, 'form'])->name('pegawai.form');
+Route::post('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.process');
+>>>>>>> 5bfd5e9f0b50601d821428f1a11b0b382bf20688
