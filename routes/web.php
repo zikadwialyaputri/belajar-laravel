@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\UserController;
 
 Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR';
@@ -51,3 +52,4 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('pelanggan', PelangganController::class);
+Route::resource('user', UserController::class);

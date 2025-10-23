@@ -69,7 +69,12 @@
                     <span class="sidebar-text">Pelanggan</span>
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('user*') ? 'active' : '' }}" href="{{ route('user.index') }}">
+                    <i class="bi bi-people"></i>
+                    <span>User</span>
+                </a>
+            </li>
             <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
             <li class="nav-item">
                 <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/getting-started/quick-start/"
