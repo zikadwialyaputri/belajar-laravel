@@ -1,8 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -29,18 +32,18 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name'     => 'required|string|max:100',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        $data['name']     = $request->name;
-        $data['email']    = $request->email;
-        $data['password'] = Hash::make($request->password);
+        User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-        User::create($data);
-
-        return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan!');
+        return redirect()->route('user.index')->with('success', 'Data User berhasil ditambahkan!');
     }
 
     /**
@@ -58,7 +61,6 @@ class UserController extends Controller
     {
         $data['dataUser'] = User::findOrFail($id);
         return view('admin.user.edit', $data);
-
     }
 
     /**
@@ -70,8 +72,8 @@ class UserController extends Controller
 
         $request->validate([
             'name'     => 'required|string|max:100',
-            'email'    => 'required|string|email|max:255|unique:users,email,' . $id,
-            'password' => 'nullable|string|min:6|confirmed',
+            'email'    => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:8|confirmed',
         ]);
 
         $user->name  = $request->name;
@@ -80,6 +82,7 @@ class UserController extends Controller
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }
+
         $user->save();
 
         return redirect()->route('user.index')->with('success', 'Data user berhasil diperbarui!');

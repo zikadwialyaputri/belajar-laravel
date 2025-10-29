@@ -50,9 +50,10 @@
 
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="border-0">#</th>
+                                    <th class="border-0">No</th>
                                     <th class="border-0">Nama</th>
                                     <th class="border-0">Email</th>
+                                    <th class="border-0">Password</th> {{-- Tambahan kolom password --}}
                                     <th class="border-0 rounded-end">Action</th>
                                 </tr>
                             </thead>
@@ -62,6 +63,7 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
+                                        <td>{{ $item->password }}</td> {{-- Tampilkan password terenkripsi --}}
                                         <td>
                                             <a href="{{ route('user.edit', $item->id) }}" class="btn btn-info btn-sm">
                                                 <svg class="icon icon-xs me-2" fill="none" stroke-width="1.5" stroke="currentColor"
