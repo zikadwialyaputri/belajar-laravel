@@ -43,13 +43,16 @@ Route::get('/question', function () {
 
 Route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
 
-Route::get('/auth', [AuthController::class, 'index'])->name('auth.index');
-Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard')->middleware('web');
+Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('pelanggan', PelangganController::class);
 Route::resource('user', UserController::class);
+
+Route::get('/auth', function () {
+    return view('home');
+
+});
+Route::get('/auth', [AuthController::class, 'index']);
+Route::post('/auth/login', [AuthController::class, 'login']);
