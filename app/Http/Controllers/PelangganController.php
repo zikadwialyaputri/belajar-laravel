@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
@@ -10,10 +9,17 @@ class PelangganController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['dataPelanggan'] = Pelanggan::all();
+        $filterableColumns     = ['gender'];
+        $searchableColumns     = ['first_name', 'last_name', 'email', 'phone'];
+        $data['dataPelanggan'] = Pelanggan::filter($request, $filterableColumns)
+            ->search($request, $searchableColumns)
+            ->simplePaginate(10)
+            ->withQueryString();
+
         return view('admin.pelanggan.index', $data);
+
     }
 
     /**
