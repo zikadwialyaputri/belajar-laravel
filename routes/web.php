@@ -9,6 +9,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR';
@@ -56,3 +61,5 @@ Route::get('/auth', function () {
 });
 Route::get('/auth', [AuthController::class, 'index']);
 Route::post('/auth/login', [AuthController::class, 'login']);
+
+Route::resource('profile', ProfileController::class);
