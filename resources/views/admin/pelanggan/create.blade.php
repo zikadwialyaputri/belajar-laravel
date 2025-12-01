@@ -87,7 +87,7 @@
                             <!-- Phone -->
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Phone</label>
-\                                <input type="text" id="phone" name="phone" class="form-control"
+                                <input type="text" id="phone" name="phone" class="form-control"
                                     value="{{ old('phone') }}">
                             </div>
 

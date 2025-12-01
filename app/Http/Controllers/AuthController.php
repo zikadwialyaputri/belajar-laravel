@@ -21,7 +21,7 @@ class AuthController extends Controller
         ], [
             'email.required' => 'Email wajib diisi.',
             'email.email' => 'Format email tidak valid.',
-            'password.required' => 'Password wajib diisi.'
+            'password.required' => 'Password harus diisi.'
         ]);
 
         $user = User::where('email', $request->email)->first();
