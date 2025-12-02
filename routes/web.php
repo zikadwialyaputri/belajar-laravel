@@ -48,7 +48,7 @@ Route::get('/question', function () {
 
 Route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+// Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -59,7 +59,10 @@ Route::get('/auth', function () {
     return view('home');
 
 });
-Route::get('/auth', [AuthController::class, 'index']);
-Route::post('/auth/login', [AuthController::class, 'login']);
+// Route::get('/auth', [AuthController::class, 'index']);
+// Route::post('/auth/login', [AuthController::class, 'login']);
 
-Route::resource('profile', ProfileController::class);
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');

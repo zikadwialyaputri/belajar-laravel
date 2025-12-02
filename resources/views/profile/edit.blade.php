@@ -33,7 +33,6 @@
             <button type="submit">Delete Profile Picture</button>
         </form>
     @endif
-
     <br>
     <a href="{{ route('profile.show') }}">Back to Profile</a>
 </body>
