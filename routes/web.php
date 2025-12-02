@@ -68,5 +68,6 @@ Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.e
 Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-Route::get('/multipleuploads', 'MultipleuploadsController@index')->name('uploads');
-Route::post('/save','MultipleuploadsController@store')->name('uploads.store');
+Route::get('/multipleuploads', [MultipleuploadsController::class, 'index'])->name('uploads');
+Route::post('/save', [MultipleuploadsController::class, 'store'])->name('uploads.store');
+
